@@ -1,7 +1,7 @@
 node {
 	stage('prepare Docker Image'){
 		echo 'preparing docker image'
-		sh "docker  build -t sumitsingh/repo:pipeline"
+		sh "docker  build -t sumitsingh/repo:pipeline ."
 		sh "docker  login -u sumitsingh -p sumit08"
 		sh "docker  push sumitsingh/repo:pipeline"		
 		echo 'docker image pushed successfully'
