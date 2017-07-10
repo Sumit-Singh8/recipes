@@ -1,11 +1,9 @@
 node {
 	stage('prepare Docker Image'){
 		echo 'preparing docker image'
-		def stdout = new StringWriter()
-        def stderr = new StringWriter()
-		['/bin/sh', '-c', "docker  build -t sumitsingh/repo:pipeline"].execute()
-		['/bin/sh', '-c', "docker  login -u sumitsingh -p sumit08"].execute()
-		['/bin/sh', '-c', "docker  push sumitsingh/repo:pipeline"].execute()		
+		sh "docker  build -t sumitsingh/repo:pipeline"
+		sh "docker  login -u sumitsingh -p sumit08"
+		sh "docker  push sumitsingh/repo:pipeline"		
 		echo 'docker image pushed successfully'
 	}	
     stage('build'){
