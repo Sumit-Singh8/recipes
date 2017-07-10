@@ -1,8 +1,8 @@
 node {
 	stage('prepare Docker Image'){
 		echo 'preparing docker image'
-		echo "" > test.txt
-		tail -f test.txt
+		sh 'echo "" > test.txt '
+		sh "tail -f test.txt"
 		echo 'docker image pushed successfully'
 	}	
     stage('build'){
