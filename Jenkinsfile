@@ -27,10 +27,11 @@ node {
    hostPathVolume(hostPath: '/usr/bin/docker' , mountPath : '/usr/bin/docker') , 
    hostPathVolume(hostPath: '/var/run/docker.sock' , mountPath: '/var/run/docker.sock')],
    )
- 
+{
  node ('mypod') {
 stage("Read file"){
  def v=readFile('pom.xml')
+}
 }
 }
 
