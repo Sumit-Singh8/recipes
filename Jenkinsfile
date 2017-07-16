@@ -20,7 +20,7 @@ node {
 }
 */
 
- podTemplate(nmae: 'pipelinePod' , label: 'mypod', containers: [
+ podTemplate(name: 'pipelinePod' , label: 'mypod', containers: [
     containerTemplate(name: 'maven', image: 'sumitsingh/repo:pipeline',
 	workingDir: '/root/', args: '${computer.jnlpmac} ${computer.name}' , command: '')
    ], volumes: [
