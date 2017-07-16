@@ -42,8 +42,23 @@ stage("Read file"){
 		sh "docker  login -u sumitsingh -p sumit08"
 		sh "docker  push sumitsingh/repo:pipeline"		
 		echo 'docker image pushed successfully'
+		
+		 podTemplate(name: 'pipelinePod' , label: 'mypod', containers: [
+    containerTemplate(name: 'maven', image: 'sumitsingh/repo:pipeline',
+	workingDir: '/root/', args: '${computer.jnlpmac} ${computer.name}' , command: '')
+   ], volumes: [
+   hostPathVolume(hostPath: '/usr/bin/docker' , mountPath : '/usr/bin/docker') , 
+   hostPathVolume(hostPath: '/var/run/docker.sock' , mountPath: '/var/run/docker.sock')],
+   )
+		{
+			stage("in new pod")	{
+				
+				echo "New pod template"
+			}
+		}
 	}
 }
 }
 }
+
 
