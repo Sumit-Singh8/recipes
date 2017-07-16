@@ -21,7 +21,7 @@ node {
 */
 
  podTemplate(name: 'pipelinePod' , label: 'mypod', containers: [
-    containerTemplate(name: 'maven', image: 'fa51172f1daf564b3ce18eadc7340168f460dbf439de5b9dc4f1d3dc0702b645',
+    containerTemplate(name: 'maven', image: 'sumitsingh/repo:pipeline',
 	workingDir: '/root/', args: '${computer.jnlpmac} ${computer.name}' , command: '')
    ], volumes: [
    hostPathVolume(hostPath: '/usr/bin/docker' , mountPath : '/usr/bin/docker') , 
