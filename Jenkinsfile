@@ -1,3 +1,4 @@
+/*
 node {
 	stage('prepare Docker Image'){
 		checkout scm
@@ -17,3 +18,9 @@ node {
         echo 'stage deploy executed'
     }
 }
+*/
+
+stage("Read file"){
+ def v=readFile('pom.xml')
+}
+
