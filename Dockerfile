@@ -9,3 +9,6 @@ RUN apt-get install -y maven
 
 # installing git client
 RUN apt-get install -y git
+
+# installing vim editor
+RUN apt-get install -y vim

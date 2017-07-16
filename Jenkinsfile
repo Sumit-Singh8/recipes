@@ -54,6 +54,7 @@ stage("Read file"){
 			stage("in new pod")	{
 				
 				echo "New pod template"
+				sh "vi --version"
 			}
 		}
 	}
