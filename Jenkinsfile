@@ -30,6 +30,7 @@ node {
 {
  node ('mypod') {
 stage("Read file"){
+	checkout scm
  def v=readFile('buildInfo')
 	if(v){
 		echo "data found"
