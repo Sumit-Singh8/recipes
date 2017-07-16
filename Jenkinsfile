@@ -43,8 +43,8 @@ stage("Read file"){
 		sh "docker  push sumitsingh/repo:pipeline"		
 		echo 'docker image pushed successfully'
 		
-		 podTemplate(name: 'pipelinePod' , label: 'mypod', containers: [
-    containerTemplate(name: 'maven', image: 'sumitsingh/repo:pipeline',
+		 podTemplate(name: 'jnlp' , label: 'mypod', containers: [
+    containerTemplate(name: 'jnlp', image: 'sumitsingh/repo:reveal_4',
 	workingDir: '/root/', args: '${computer.jnlpmac} ${computer.name}' , command: '')
    ], volumes: [
    hostPathVolume(hostPath: '/usr/bin/docker' , mountPath : '/usr/bin/docker') , 
