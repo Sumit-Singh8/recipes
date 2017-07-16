@@ -20,7 +20,7 @@ node {
 }
 */
 
- podTemplate(label: 'mypod', containers: [
+ podTemplate(nmae: 'pipelinePod' , label: 'mypod', containers: [
     containerTemplate(name: 'maven', image: 'sumitsingh/repo:pipeline',
 	workingDir: '/root/', args: '${computer.jnlpmac} ${computer.name}' , command: '')
    ], volumes: [
@@ -30,7 +30,13 @@ node {
 {
  node ('mypod') {
 stage("Read file"){
- def v=readFile('pom.xml')
+ def v=readFile('buildInfo')
+	if(v){
+		echo "data found"
+	}
+	else{
+		echo "no data"
+	}
 }
 }
 }
