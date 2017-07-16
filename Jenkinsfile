@@ -43,7 +43,7 @@ stage("Read file"){
 		sh "docker  push sumitsingh/repo:pipeline"		
 		echo 'docker image pushed successfully'
 		
-		 podTemplate(name: 'jnlp' , label: 'mypod', containers: [
+		 podTemplate(name: 'jnlp' , label: 'mypodNew', containers: [
     containerTemplate(name: 'jnlp', image: 'sumitsingh/repo:reveal_4',
 	workingDir: '/root/', args: '${computer.jnlpmac} ${computer.name}' , command: '')
    ], volumes: [
@@ -51,11 +51,13 @@ stage("Read file"){
    hostPathVolume(hostPath: '/var/run/docker.sock' , mountPath: '/var/run/docker.sock')],
    )
 		{
+			 node ('mypodNew') {
 			stage("in new pod")	{
 				
 				echo "New pod template"
-				sh "vi --version"
+				sh "bower -v"
 			}
+			 }
 		}
 	}
 }
